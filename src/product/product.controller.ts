@@ -1,11 +1,11 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post } from '@nestjs/common'
 import { FindProductDto } from './dto/find-product.dto'
-import { ProductModel } from './product.model'
+import { Product } from './product.schema'
 
 @Controller('product')
 export class ProductController {
 	@Post('create')
-	async create(@Body() dto: Omit<ProductModel, 'id'>) {}
+	async create(@Body() dto: Omit<Product, 'id'>) {}
 
 	@Get(':id')
 	async get(@Param('id') id: string) {}
@@ -14,7 +14,7 @@ export class ProductController {
 	async delete(@Param('id') id: string) {}
 
 	@Patch('id')
-	async patch(@Param('id') id: string, @Body() dto: ProductModel) {}
+	async patch(@Param('id') id: string, @Body() dto: Product) {}
 
 	@HttpCode(200)
 	@Post()

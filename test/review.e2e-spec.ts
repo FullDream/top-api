@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common'
 import * as request from 'supertest'
 import { AppModule } from '../src/app.module'
 import { ReviewCreateDto } from 'src/review/dto/review-create.dto'
-import { Types } from 'mongoose'
+import { disconnect, Types } from 'mongoose'
 
 const productId = new Types.ObjectId().toHexString()
 
@@ -38,5 +38,9 @@ describe('AppController (e2e)', () => {
 				expect(createdId).toBeDefined()
 				done()
 			})
+	})
+
+	afterAll(() => {
+		disconnect()
 	})
 })

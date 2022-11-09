@@ -34,7 +34,6 @@ export class ReviewController {
 			throw new HttpException(reviewMessages.REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND)
 		}
 	}
-	@UseGuards(JwtAuthGuard)
 	@Get('byProduct/:productId')
 	async getByProduct(@Param('id') productId: string): Promise<Review[]> {
 		return this.reviewService.findByProductId(productId)

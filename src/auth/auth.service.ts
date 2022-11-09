@@ -16,9 +16,10 @@ export class AuthService {
 
 	public async create(dto: AuthDto) {
 		const salt = await genSalt(10)
+
 		const newUser = new this.userModel({
 			email: dto.login,
-			passwordHash: hash(dto.password, salt),
+			passwordHash: await hash(dto.password, salt),
 		})
 		return newUser.save()
 	}

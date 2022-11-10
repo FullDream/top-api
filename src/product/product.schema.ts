@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document } from 'mongoose'
 
-export type AuthDocument = Product & Document
+export type ProductDocument = Product & Document
 
 class ProductCharacteristic {
 	@Prop()
@@ -23,13 +23,10 @@ export class Product {
 	price: number
 
 	@Prop()
-	oldPrice: number
+	oldPrice?: number
 
 	@Prop()
 	credit: number
-
-	@Prop()
-	calculatedRating: number
 
 	@Prop()
 	description: string

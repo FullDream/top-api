@@ -27,8 +27,6 @@ class TopPageAdvantage {
 	description: string
 }
 
-export type TopPageDocument = TopPage & Document
-
 @Schema({ timestamps: true, id: true })
 export class TopPage {
 	@Prop({ enum: TopLevelCategory })
@@ -62,4 +60,10 @@ export class TopPage {
 	tags: string[]
 }
 
-export const TopPageSchema = SchemaFactory.createForClass(TopPage)
+const TopPageSchema = SchemaFactory.createForClass(TopPage)
+
+TopPageSchema.index({ '$**': 'text' })
+
+export { TopPageSchema }
+
+export type TopPageDocument = TopPage & Document

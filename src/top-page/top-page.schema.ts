@@ -8,7 +8,7 @@ export enum TopLevelCategory {
 	Goods,
 }
 
-class HhData {
+export class HhData {
 	@Prop()
 	count: number
 
@@ -20,6 +20,9 @@ class HhData {
 
 	@Prop()
 	seniorSalary: number
+
+	@Prop()
+	updatedAt: Date
 }
 
 class TopPageAdvantage {
